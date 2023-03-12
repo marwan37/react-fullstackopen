@@ -1,0 +1,13 @@
+DELETE http://localhost:3001/api/persons/5
+
+#### Get All Persons
+GET http://localhost:3001/api/persons
+
+### Create New Person
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Dan Abramov",
+  "number": "555-1234567"
+}
