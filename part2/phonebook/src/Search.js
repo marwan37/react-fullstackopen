@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 
-const Search = ({ query, setQuery, persons, setLocalPersons }) => {
+const Search = ({ query, setQuery, contacts, setLocalContacts }) => {
   useEffect(() => {
     if (!query) {
-      setLocalPersons(persons);
+      setLocalContacts(contacts);
     } else {
-      const filtered = persons.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
-      setLocalPersons(filtered);
+      const filtered = contacts.filter(c => c.name.toLowerCase().includes(query.toLowerCase()));
+      setLocalContacts(filtered);
     }
   }, [query]);
 
   return (
     <div>
-      filter persons:
+      filter contacts:
       <input onInput={e => setQuery(e.target.value)} />
     </div>
   );

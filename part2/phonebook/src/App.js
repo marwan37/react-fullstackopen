@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import PersonForm from "./PersonForm";
-import Persons from "./Persons";
+import ContactForm from "./ContactForm";
+import Contacts from "./Contacts";
 import Search from "./Search";
-import personsService from "./services/persons";
+import contactsAPI from "./services/contacts";
 
 const App = () => {
-  const [persons, setPersons] = useState([]);
-  const [localPersons, setLocalPersons] = useState([]);
-  const personsRef = useRef(0);
+  const [contacts, setContacts] = useState([]);
+  const [localContacts, setLocalContacts] = useState([]);
+  const contactsRef = useRef(0);
 
   const [query, setQuery] = useState("");
 
@@ -15,18 +15,18 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    personsService
+    contactsAPI
       .getAll()
       .then(res => res.data)
       .then(data => {
-        setPersons(data);
-        setLocalPersons(data);
+        setContacts(data);
+        setLocalContacts(data);
       });
   }, []);
 
   useEffect(() => {
-    personsRef.current++;
-  }, [localPersons, message, errorMessage]);
+    contactsRef.current++;
+  }, [localContacts, message, errorMessage]);
 
   return (
     <div>
@@ -36,24 +36,24 @@ const App = () => {
       <Search
         query={query}
         setQuery={setQuery}
-        persons={persons}
-        setLocalPersons={setLocalPersons}
+        contacts={contacts}
+        setLocalContacts={setLocalContacts}
       />
-      <h3>Add a new person</h3>
-      <PersonForm
+      <h3>Add a new contact</h3>
+      <ContactForm
         setMessage={setMessage}
         setErrorMessage={setErrorMessage}
-        setPersons={setPersons}
-        persons={persons}
-        setLocalPersons={setLocalPersons}
+        setContacts={setContacts}
+        contacts={contacts}
+        setLocalContacts={setLocalContacts}
       />
       <h2>Numbers</h2>
-      <Persons
-        persons={persons}
-        localPersons={localPersons}
-        deletePerson={personsService.deletePerson}
-        setPersons={setPersons}
-        setLocalPersons={setLocalPersons}
+      <Contacts
+        contacts={contacts}
+        localContacts={localContacts}
+        deleteContact={contactsAPI.deleteContact}
+        setContacts={setContacts}
+        setLocalContacts={setLocalContacts}
         setMessage={setMessage}
         setErrorMessage={setErrorMessage}
       />

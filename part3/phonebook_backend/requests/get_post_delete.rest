@@ -1,13 +1,19 @@
-DELETE http://localhost:3001/api/persons/5
+DELETE http://localhost:3001/api/contacts/640e40a926007c58c340d8c3
 
-#### Get All Persons
-GET http://localhost:3001/api/persons
+#### Fetch All Contacts
+GET http://localhost:3001/api/contacts
 
-### Create New Person
-POST http://localhost:3001/api/persons
+### Create New Contact
+POST http://localhost:3001/api/contacts
 Content-Type: application/json
 
 {
-  "name": "Dan Abramov",
-  "number": "555-1234567"
+  "name": "Hercule Poirot",
+  "number": "233-808-9090"
 }
+
+#### Fetch Individual Contact by Id
+GET http://localhost:3001/api/contacts/640e40f726007c58c340d8d4
+
+#### Get INFO
+GET http://localhost:3001/info
